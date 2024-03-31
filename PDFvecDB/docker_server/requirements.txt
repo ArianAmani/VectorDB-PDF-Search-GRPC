@@ -1,0 +1,8 @@
+grpcio==1.62.1
+langchain==0.1.13
+nltk==3.5
+pinecone-client
+protobuf==5.26.1
+torch==2.1.1
+transformers==4.33.3
+pypdf

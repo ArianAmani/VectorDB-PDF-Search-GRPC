@@ -1,0 +1,62 @@
+syntax = "proto3";
+
+// The inference service definition.
+service InferenceServer {
+  // Sends an inference reply
+  rpc initialize (InitializeRequest) returns (InitializeReply) {}
+
+  rpc add_document (stream UploadFileRequest) returns (StringResponse) {}
+
+  rpc query_document (stream QueryRequest) returns (StringResponse) {}
+  
+  rpc query_text (QueryTextRequest) returns (StringResponse) {}
+}
+
+// Message to represent the request containing a PDF file
+message MetaData {
+    string filename = 1;
+    string extension = 2;
+  }
+
+message UploadFileRequest {
+oneof request {
+    MetaData metadata = 1;
+    bytes chunk_data = 2;
+}
+}
+
+message QueryRequest {
+    oneof request {
+        MetaData metadata = 1;
+        bytes chunk_data = 2;
+        string name_space = 3;
+        bool include_metadata = 4;
+        int32 top_k = 5;
+    }
+    }
+
+message QueryTextRequest {
+    string text = 1;
+    string name_space = 2;
+    bool include_metadata = 3;
+    int32 top_k = 4;
+
+}
+
+message StringResponse {
+    string message = 1;
+}
+
+// Message to represent the request containing the model name, api, index_name
+message InitializeRequest {
+    string api_key = 1;
+    string language_model_path = 2;
+    string summarization_model_path = 3;
+    string index_name = 4;
+    string metric = 5;
+    string environment = 6;
+}
+
+message InitializeReply {
+    string message = 1;
+}
