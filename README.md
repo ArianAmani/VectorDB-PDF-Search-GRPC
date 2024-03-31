@@ -1,5 +1,10 @@
 # gRPC Client-Server for Document Processing and Search
 
+### Demo
+https://github.com/ArianAmani/VectorDB-PDF-Search-GRPC/assets/78699446/4d25724c-36ab-41b9-bb5a-542b99492a2d
+
+
+
 This repository contains a gRPC client-server implementation for document processing and search functionalities. It provides capabilities for uploading documents, searching text or PDF documents, and initializing the models required for processing and indexing documents.
 
 ## Features
@@ -18,7 +23,7 @@ This repository contains a gRPC client-server implementation for document proces
 ### Running the Server
 
 #### Important: Change your initialization settings for the model to use in `server/inference.py`
-* API_KEY
+* API_KEY (pinecone api)
 * language_model_path
 * summarization_model_path
 * index_name
